@@ -16,3 +16,7 @@
 /* Stop purging. */
 
 /* Your own custom utilities */
+
+body {
+  @apply bg-pearl text-white;
+}
