@@ -5,7 +5,7 @@ module.exports = {
       colors: {
         'accent-1': '#333',
         'pearl': '#15202B',
-        'border': '#3d3966'
+        'border': '#3d3966',
       },
     },
   },
