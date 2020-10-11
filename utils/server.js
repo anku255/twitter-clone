@@ -10,6 +10,7 @@ export function makeServer({ environment = "development" } = {}) {
 
     models: {
       tweet: Model,
+      message: Model,
     },
 
     factories: {
@@ -20,15 +21,24 @@ export function makeServer({ environment = "development" } = {}) {
         text: () => lorem.lines(random.number(3) || 1),
         createdAt: () => addMinutes(dateNow, random.number(1000)).toISOString(),
       }),
+      message: Factory.extend({
+        fullName: () => `${name.firstName()} ${name.lastName()}`,
+        userName: () => `${internet.userName()}`,
+        avatar: () => internet.avatar(),
+        message: () => lorem.lines(random.number(2) || 1),
+        createdAt: () => addMinutes(dateNow, random.number(1000)).toISOString(),
+      }),
     },
 
     seeds(server) {
       server.createList("tweet", 15);
+      server.createList("message", 10);
     },
 
     routes() {
       this.namespace = "api";
       this.get("tweets");
+      this.get('messages');
     },
   });
 }

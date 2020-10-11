@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-
-TimeAgo.addLocale(en);
-const timeAgo = new TimeAgo("en-US");
+import { timeAgo } from "../utils/timeAgo";
 
 const TweetCard = ({
   tweet: { fullName, avatar, userName, text, createdAt },
 }) => {
   return (
-    <div className="flex px-4 py-2 border-b border-border">
+    <div className="flex px-4 py-2 border-b text-base border-border">
       {/* image */}
-      <div className="w-10 h-10 mr-4 flex-shrink-0">
+      <div className="w-12 h-12 mr-4 flex-shrink-0">
         <img
           className="w-full h-full rounded-full object-cover bg-gray-600"
           src={avatar}
@@ -21,7 +17,7 @@ const TweetCard = ({
       {/* Body */}
       <div className="flex flex-col flex-1 min-w-0">
         {/* Header Row */}
-        <div className="flex items-center justify-between text-sm min-w-0">
+        <div className="flex items-center justify-between min-w-0">
           <div className="flex min-w-0">
             <span className="truncate">
               <span className="font-bold">{fullName}</span>
@@ -38,7 +34,7 @@ const TweetCard = ({
         </div>
 
         {/* Text */}
-        <div className="text-sm py-1 leading-normal">{text}</div>
+        <div className="py-1">{text}</div>
 
         {/* Footer */}
         <div className="mt-2 flex justify-between text-gray-500">
