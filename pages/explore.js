@@ -38,7 +38,6 @@ const TabList = () => {
   const handleScroll = () => {
     const { scrollLeft, scrollWidth } = tabListRef.current;
 
-    console.log({ scrollLeft, scrollWidth });
     if (scrollLeft === 0) {
       tabListRef.current.scrollLeft = scrollWidth;
       setScrolled(true);
@@ -83,10 +82,71 @@ const TabList = () => {
   );
 };
 
+const Banner = () => (
+  <div
+    className="w-full h-64 bg-cover"
+    style={{ backgroundImage: "url(https://imgur.com/VTFGvTj.jpeg)" }}
+  >
+    <div className="h-full py-3 px-4 flex flex-col justify-end bg-overlay">
+      <div className="text-tiny">IPL 2020 . LIVE</div>
+      <div className="text-2xl font-bold">
+        IPL: The Mumbai Indians take on the Delhi Capitals
+      </div>
+    </div>
+  </div>
+);
+
+const ExploreListItem = ({ category, title, imageUrl, noOfTweets }) => (
+  <div className="px-4 py-3 flex justify-between border-b border-border">
+    <div className="">
+      <div className="text-tiny text-primary-text">{category}</div>
+      <div className="text-base font-bold">{title}</div>
+      {noOfTweets && <div className="text-tiny text-primary-text">{noOfTweets} Tweets</div>}
+    </div>
+    {imageUrl && (
+      <div className="h-17 w-17">
+        <img
+          className="w-full h-full rounded-md object-cover"
+          src={imageUrl}
+          alt=""
+        />
+      </div>
+    )}
+  </div>
+);
+
 export default function ExplorePage() {
   return (
     <div>
       <TabList />
+      <Banner />
+      <div className="w-full h-3 bg-accent-2"></div>
+      <ExploreListItem
+        category="COVID-19 . LIVE"
+        title="COVID-19 in India"
+        imageUrl="https://pbs.twimg.com/semantic_core_img/1255575536824233984/CiLy4der?format=jpg&name=360x360"
+      />
+      <ExploreListItem
+        category="Trending in India"
+        title="#WorldBiryaniDay"
+        noOfTweets="2,070"
+      />
+      <ExploreListItem
+        category="Tennis . LIVE"
+        title="#French Open"
+        noOfTweets="1,089"
+        imageUrl="https://pbs.twimg.com/semantic_core_img/1315179382885949440/mx3a3fZV?format=jpg&name=360x360"
+      />
+      <ExploreListItem
+        category="Tennis"
+        title="20 Grand Slams"
+        noOfTweets="26.7K"
+      />
+      <ExploreListItem
+        category="Soccer . Trending"
+        title="England"
+        noOfTweets="250K"
+      />
     </div>
   );
 }
