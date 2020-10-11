@@ -9,7 +9,7 @@ makeServer();
 function MyApp({ Component, pageProps }) {
   return (
     <div className="flex justify-center bg-gray-200  min-h-screen max-h-screen sm:py-2">
-      <div className="flex flex-col min-h-full max-h-screen bg-pearl max-w-full sm:max-w-sm sm:min-w-sm lg:max-h-screen-80">
+      <div className="flex flex-col min-w-full min-h-full max-h-screen bg-pearl max-w-full sm:max-w-sm sm:min-w-sm lg:max-h-screen-80">
         {Component.Header ? (
           <Component.Header />
         ) : (
