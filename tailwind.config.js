@@ -10,6 +10,7 @@ module.exports = {
         "blue-500": "rgb(29, 161, 242)",
         "primary-text": "#8899A6",
         overlay: "rgba(0, 0, 0, 0.3)",
+        heart: "rgb(224, 36, 94)",
       },
       fontSize: {
         base: ["0.9375rem", "1.5"],

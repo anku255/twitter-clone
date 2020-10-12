@@ -7,7 +7,7 @@ import { timeAgo } from "../utils/timeAgo";
 
 const Message = ({ fullName, userName, avatar, createdAt, message }) => (
   <div className="p-4 flex border-b text-base text-primary-text border-border">
-    <div className="w-12 h-12 rounded-full mr-2">
+    <div className="w-12 h-12 rounded-full mr-2 bg-gray-500">
       <img
         src={avatar}
         alt={fullName}

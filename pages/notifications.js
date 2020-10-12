@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import cx from "classnames";
 
-import { SettingsIcon, PersonIcon } from "../components/Icons";
+import { SettingsIcon, PersonIcon, HeartIcon } from "../components/Icons";
 
 const TabListItem = ({ title, isActive, onClick }) => (
   <div
@@ -48,17 +48,41 @@ const FollowNotication = ({ fullName, avatar }) => (
           className="w-full h-full rounded-full object-cover"
         />
       </div>
-      <div className="text-base">
+      <div className="text-base leading-relaxed">
         <span className="font-bold">{fullName}</span> followed you
       </div>
     </div>
   </div>
 );
 
-const NotificationItem = ({ type, fullName, avatar }) => {
+const LikeNotification = ({ fullName, avatar, text }) => (
+  <div className="py-3 px-4 flex border-b border-border">
+    <div className="w-12 h-14 pr-4 flex-shrink-0">
+      <HeartIcon className="text-heart" />
+    </div>
+    <div className="flex flex-col justify-between">
+      <div className="w-7 h-7">
+        <img
+          src={avatar}
+          alt={fullName}
+          className="w-full h-full rounded-full object-cover"
+        />
+      </div>
+      <div className="text-base leading-relaxed">
+        <span className="font-bold">{fullName}</span> liked your reply
+      </div>
+
+      <div className="text-base text-primary-text">{text}</div>
+    </div>
+  </div>
+);
+
+const NotificationItem = ({ type, fullName, avatar, text }) => {
   switch (type) {
     case "follow":
       return <FollowNotication {...{ fullName, avatar }} />;
+    case "like":
+      return <LikeNotification {...{ fullName, avatar, text }} />;
     default:
       return null;
   }
@@ -71,7 +95,6 @@ export default function NotificationsPage() {
     fetch("/api/notifications")
       .then((res) => res.json())
       .then((data) => {
-        console.log("data", data);
         setNotifications(data);
       });
   }, []);
@@ -79,8 +102,11 @@ export default function NotificationsPage() {
   return (
     <div>
       <TabList />
-      {notifications.map(({ type, fullName, avatar }) => (
-        <NotificationItem key={fullName} {...{ type, fullName, avatar }} />
+      {notifications.map(({ type, fullName, avatar, text }) => (
+        <NotificationItem
+          key={fullName}
+          {...{ type, fullName, avatar, text }}
+        />
       ))}
     </div>
   );

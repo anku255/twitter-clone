@@ -8,6 +8,8 @@ const dateNow = new Date();
 const notifications = [
   { type: 'follow', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar() },
   { type: 'follow', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar() },
+  { type: 'like', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar(), text: lorem.lines(random.number(3) || 1)},
+  { type: 'like', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar(), text: lorem.lines(random.number(3) || 1)},
   { type: 'follow', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar() },
 ]
 
