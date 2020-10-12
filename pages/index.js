@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import { FAB } from "../components/FAB";
+import { NewTweetIcon } from "../components/Icons";
 import { timeAgo } from "../utils/timeAgo";
 
 const TweetCard = ({
@@ -99,6 +102,7 @@ export default function IndexPage() {
       {tweets.map((tweet) => (
         <TweetCard key={tweet.id} tweet={tweet} />
       ))}
+      <FAB Icon={NewTweetIcon} />
     </div>
   );
 }

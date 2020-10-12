@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+import { FAB } from "../components/FAB";
+import { NewMessageIcon } from "../components/Icons";
 import { SearchBar } from "../components/Searchbar";
 import { timeAgo } from "../utils/timeAgo";
 
@@ -45,7 +47,7 @@ export default function MessagesPage() {
   }, []);
 
   return (
-    <div>
+    <div className="relative">
       {/* Message request */}
       <div className="px-4 py-3 flex justify-between items-center text-sm border-b border-border">
         <span>Message requests</span>
@@ -69,6 +71,7 @@ export default function MessagesPage() {
           />
         ))}
       </div>
+      <FAB Icon={NewMessageIcon} />
     </div>
   );
 }
