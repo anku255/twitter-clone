@@ -4,6 +4,13 @@ import addMinutes from "date-fns/addMinutes";
 
 const dateNow = new Date();
 
+// prettier-ignore
+const notifications = [
+  { type: 'follow', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar() },
+  { type: 'follow', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar() },
+  { type: 'follow', fullName: `${name.firstName()} ${name.lastName()}`, avatar: internet.avatar() },
+]
+
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     environment,
@@ -38,7 +45,8 @@ export function makeServer({ environment = "development" } = {}) {
     routes() {
       this.namespace = "api";
       this.get("tweets");
-      this.get('messages');
+      this.get("messages");
+      this.get("/notifications", () => notifications);
     },
   });
 }
