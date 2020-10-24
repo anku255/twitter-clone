@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { makeServer } from "../utils/server";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import "../styles/index.css";
+import { ViewInMobileMessage } from "../components/ViewInMobileMessage";
 
 // Start miragejs server
 makeServer();
 
 function MyApp({ Component, pageProps }) {
+  const [showAlert, setShowAlert] = useState(true);
+
   useEffect(() => {
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
     const vh = window.innerHeight * 0.01;
@@ -28,7 +31,10 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <div className="flex justify-center bg-gray-200  min-h-screen max-h-screen sm:py-2">
+    <div className="flex justify-center bg-gray-200  min-h-screen max-h-screen sm:pt-17">
+      {showAlert && (
+        <ViewInMobileMessage handleClose={() => setShowAlert(false)} />
+      )}
       <div className="flex flex-col min-w-full min-h-full max-h-screen bg-pearl max-w-full sm:max-w-sm sm:min-w-sm lg:max-h-screen-80">
         {Component.Header ? (
           <Component.Header />
