@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import { FAB } from "../components/FAB";
 import { NewTweetIcon } from "../components/Icons";
@@ -85,6 +86,7 @@ const TweetCard = ({
 };
 export default function IndexPage() {
   const [tweets, setTweets] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     fetch("/api/tweets")
@@ -102,7 +104,10 @@ export default function IndexPage() {
       {tweets.map((tweet) => (
         <TweetCard key={tweet.id} tweet={tweet} />
       ))}
-      <FAB Icon={NewTweetIcon} />
+      <FAB
+        Icon={NewTweetIcon}
+        handleClick={() => router.push("/compose/tweet")}
+      />
     </div>
   );
 }

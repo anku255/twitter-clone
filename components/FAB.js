@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
 
-export const FAB = ({Icon}) => (
+export const FAB = ({ Icon, handleClick }) => (
   <div
+    onClick={handleClick}
     className="fixed w-14 h-14 flex justify-center items-center rounded-full bg-blue-500 cursor-pointer sm:hidden"
     style={{
       bottom: 64,
