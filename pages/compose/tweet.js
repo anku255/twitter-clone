@@ -40,7 +40,7 @@ const ComposeTweet = () => {
         {/* Text Area */}
         <div className="flex-1 py-3 border-b border-border">
           <textarea
-            className="w-full h-40 bg-pearl text-lg focus:outline-none"
+            className="w-full h-40 bg-pearl text-lg focus:outline-none resize-none"
             name=""
             id=""
             cols="30"
@@ -81,9 +81,9 @@ const ComposeTweet = () => {
                   style={{ overflow: "visible" }}
                 >
                   {/* prettier-ignore */}
-                  <circle cx="50%" cy="50%" fill="none" stroke-width="2" r="9" stroke="#38444D"></circle>
+                  <circle cx="50%" cy="50%" fill="none" stroke="2" r="9" stroke="#38444D"></circle>
                   {/* prettier-ignore */}
-                  <circle cx="50%" cy="50%" fill="none" stroke-width="2" r="9" stroke="#1DA1F2" stroke-linecap="round" style={{ strokeDashoffset: strokeOffset, strokeDasharray: 56.5487 }}></circle>
+                  <circle cx="50%" cy="50%" fill="none" stroke="2" r="9" stroke="#1DA1F2" strokeLinecap="round" style={{ strokeDashoffset: strokeOffset, strokeDasharray: 56.5487 }}></circle>
                 </svg>
               </div>
               <div className="w-7 h-7 flex items-center justify-center rounded-full border border-blue-500 text-blue-500">
@@ -114,3 +114,5 @@ ComposeTweet.Header = () => {
 };
 
 export default ComposeTweet;
+
+ComposeTweet.title = "Compose Tweet";

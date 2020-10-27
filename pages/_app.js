@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+// import { Helmet } from "react-helmet";
+import Head from "next/head";
 
 import { makeServer } from "../utils/server";
 import { Header } from "../components/Header";
@@ -32,6 +34,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <div className="flex justify-center bg-gray-200  min-h-screen max-h-screen sm:pt-17">
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <title>{Component.title} | Twitter</title>
+      </Head>
       {showAlert && (
         <ViewInMobileMessage handleClose={() => setShowAlert(false)} />
       )}
